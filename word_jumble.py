@@ -37,12 +37,11 @@ def answer():
 global hint_count
 hint_count = 0
 
-def hint(count):
+def hint():
     global hint_count
-    hint_count = count
     word_length = len(word)
-    if count < word_length:
-        hint_label.config(text=f'{hint_label["text"]} {word[count]}', bg='aqua')
+    if hint_count < word_length:
+        hint_label.config(text=f'{hint_label["text"]} {word[hint_count]}', bg='aqua')
         hint_count += 1
 
 
@@ -55,7 +54,7 @@ answer_button = Button(button_frame, text="Answer", command=answer, bg='orange',
 answer_button.grid(row=0, column=0, padx=10)
 my_button = Button(button_frame, text="Pick Another Word", command=shuffler, bg='orange', width=15, font=10)
 my_button.grid(row=0, column=1, padx=10)
-hint_button = Button(button_frame, text="Hint", command=lambda: hint(hint_count), bg='orange', width=5, font=10)
+hint_button = Button(button_frame, text="Hint", command=lambda: hint(), bg='orange', width=5, font=10)
 hint_button.grid(row=0, column=2, padx=10)
 
 answer_label = Label(root, text='', font=("Arial", 22))
